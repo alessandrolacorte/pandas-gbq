@@ -498,10 +498,10 @@ class GbqConnector(object):
             if timeout_ms and timeout_ms < self.get_elapsed_seconds() * 1000:
                 raise QueryTimeout("Query timeout: {} ms".format(timeout_ms))
 
-            timeout_sec = 1.0
-            if timeout_ms:
-                # Wait at most 1 second so we can show progress bar
-                timeout_sec = min(1.0, timeout_ms / 1000.0)
+            timeout_sec = 10.0
+            # if timeout_ms:
+            #     # Wait at most 1 second so we can show progress bar
+            #     timeout_sec = min(1.0, timeout_ms / 1000.0)
 
             try:
                 query_reply.result(timeout=timeout_sec)
